@@ -8,6 +8,10 @@
 - **Editor de Texto** - [Lazyvim](https://www.lazyvim.org/)
 - **Multiplexador de Terminal** - [Tmux](https://github.com/tmux)
 
+## Dependências
+- git-core
+- curl
+
 ## Instalação
 
 1. Execute o script **packages** para instalar os pacotes essenciais (alacritty, neovim, tmux, zsh, bat, tree-sitter, nodejs, lua53-luarocks, padrão de desenvolvimento C/C++), configurar Lazyvim, Oh My Zsh, Powerlevel10k, TPM e zoxide.
