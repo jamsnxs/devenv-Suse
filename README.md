@@ -1,4 +1,11 @@
 # devenv-ifsuse
+## Recursos de configuração
+- **OS** - [openSUSE Tumbleweed ](https://get.opensuse.org/tumbleweed/#download)
+- **Shell** - Zsh
+- **Zsh Framework** - [Oh My Zsh](https://ohmyz.sh/)
+- **Prompt** - [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
+- **Terminal** - [Alacritty](https://github.com/alacritty/alacritty)
+- **Editor de Texto** - [Lazyvim](https://www.lazyvim.org/)
 
 ## Ordem correta:
 
