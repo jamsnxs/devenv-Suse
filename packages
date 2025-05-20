@@ -1,21 +1,22 @@
 #!/bin/bash
 set -e
 
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
 PACKAGES=(alacritty neovim tmux zsh bat)
 
-echo "[INFO] Instalando pacotes: ${PACKAGES[*]}"
+echo -e "${YELLOW}[INFO] Instalando pacotes: ${PACKAGES[*]}${NC}"
 sudo zypper --non-interactive install -y "${PACKAGES[@]}"
 
-echo "[INFO] Instalando padrão de desenvolvimento C/C++..."
+echo -e "${YELLOW}[INFO] Instalando padrão de desenvolvimento C/C++...${NC}"
 sudo zypper --non-interactive install -t pattern devel_C_C++
 
-# Inicializar Neovim para criar diretórios necessários
-echo "[INFO] Inicializando Neovim para criação dos diretórios..."
+echo -e "${YELLOW}[INFO] Inicializando Neovim para criação dos diretórios...${NC}"
 nvim --headless +qall
 
-# Backup das configs antigas do nvim (se existirem)
 if [ -d "$HOME/.config/nvim" ]; then
-  echo "[INFO] Fazendo backup da configuração atual do Neovim..."
+  echo -e "${YELLOW}[INFO] Fazendo backup da configuração atual do Neovim...${NC}"
   mv ~/.config/nvim{,.bak}
 fi
 if [ -d "$HOME/.local/share/nvim" ]; then
@@ -28,44 +29,35 @@ if [ -d "$HOME/.cache/nvim" ]; then
   mv ~/.cache/nvim{,.bak}
 fi
 
-# Clonar LazyVim Starter
-echo "[INFO] Instalando LazyVim Starter..."
+echo -e "${YELLOW}[INFO] Instalando LazyVim Starter...${NC}"
 git clone https://github.com/LazyVim/starter ~/.config/nvim
-
-# Remover .git para evitar conflito no repo
 rm -rf ~/.config/nvim/.git
 
-# Oh My Zsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
-  echo "[INFO] Instalando Oh My Zsh..."
-  RUNZSH=no CHSH=no sh -c \
-    "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  echo -e "${YELLOW}[INFO] Instalando Oh My Zsh...${NC}"
+  RUNZSH=no CHSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
 if [ "$SHELL" != "$(which zsh)" ]; then
-  echo "[INFO] Alterando shell padrão para zsh..."
+  echo -e "${YELLOW}[INFO] Alterando shell padrão para zsh...${NC}"
   chsh -s "$(which zsh)"
 fi
 
-# zoxide
 if ! command -v zoxide &>/dev/null; then
-  echo "[INFO] Instalando zoxide via script oficial..."
+  echo -e "${YELLOW}[INFO] Instalando zoxide via script oficial...${NC}"
   curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 fi
 
-# powerlevel10k
 ZSH_CUSTOM=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
 if [ ! -d "$ZSH_CUSTOM/themes/powerlevel10k" ]; then
-  echo "[INFO] Instalando Powerlevel10k..."
+  echo -e "${YELLOW}[INFO] Instalando Powerlevel10k...${NC}"
   git clone --depth=2 https://github.com/romkatv/powerlevel10k.git "$ZSH_CUSTOM/themes/powerlevel10k"
 fi
 
-# TPM
 if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
-  echo "[INFO] Instalando TPM (Tmux Plugin Manager)..."
+  echo -e "${YELLOW}[INFO] Instalando TPM (Tmux Plugin Manager)...${NC}"
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
-echo "[INFO] Shell padrão alterado para zsh. Para aplicar, reinicie o sistema."
-echo "[INFO] LazyVim instalado. Execute 'nvim' e depois ':LazyHealth' para validar. Não execute copy_dir antes disso!"
-echo "[INFO] Abra uma sessão tmux e pressione 'prefix + I' para instalar os plugins manualmente."
+echo -e "${YELLOW}[INFO] Shell padrão alterado para zsh. Para aplicar, reinicie o sistema.${NC}"
+echo -e "${YELLOW}[INFO] LazyVim instalado. Execute 'nvim' e depois ':LazyHealth' para validar. Não execute copy_dir antes disso!${NC}"
