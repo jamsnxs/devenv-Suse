@@ -1,11 +1,12 @@
 # devenv-Suse
+
 ## Recursos de configuração
-- **SO** - [openSUSE Tumbleweed ](https://get.opensuse.org/tumbleweed/#download)
+- **S.O** - [openSUSE Tumbleweed ](https://get.opensuse.org/tumbleweed/#download)
 - **Shell** - Zsh
 - **Prompt** - [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
 - **Terminal** - [Alacritty](https://github.com/alacritty/alacritty)
 - **Zsh Framework** - [Oh My Zsh](https://ohmyz.sh/)
-- **Editor de Texto** - [Lazyvim](https://www.lazyvim.org/)
+- **Editor de Texto** - [Neovim](https://github.com/neovim/neovim)
 - **Multiplexador de Terminal** - [Tmux](https://github.com/tmux)
 
 ## Dependências
@@ -14,7 +15,7 @@
 
 ## Instalação
 
-1. Execute o script **packages** para instalar os pacotes essenciais (alacritty, neovim, tmux, zsh, bat, tree-sitter, nodejs, lua53-luarocks, padrão de desenvolvimento C/C++), configurar Lazyvim, Oh My Zsh, Powerlevel10k, TPM e zoxide.
+1. Execute o script **packages** para instalar os pacotes essenciais (alacritty, neovim, tmux, zsh, [bat](https://github.com/sharkdp/bat#configuration-file), tree-sitter, nodejs, lua53-luarocks, padrão de desenvolvimento C/C++), configurar [Lazyvim](https://www.lazyvim.org/), Oh My Zsh, Powerlevel10k, [TPM](https://github.com/tmux-plugins/tpm) e [zoxide](https://github.com/ajeetdsouza/zoxide).
 
 2. Após o término do **packages**, execute `nvim`, após o prompt execute `:LazyHealth` para checar a instalação do LazyVim. **Não execute o script copy_dir antes dessa verificação.**
 
