@@ -61,3 +61,4 @@ fi
 
 echo -e "${YELLOW}[INFO] Shell padrão alterado para zsh. Para aplicar, reinicie o sistema.${NC}"
 echo -e "${YELLOW}[INFO] LazyVim instalado. Execute 'nvim' e depois ':LazyHealth' para validar. Não execute copy_dir antes disso!${NC}"
+echo -e "${YELLOW}[INFO] Alacritty é o emulador de terminal recomendado!${NC}"

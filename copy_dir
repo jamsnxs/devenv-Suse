@@ -23,5 +23,6 @@ cp -r oh-my-zsh-custom/* ~/.oh-my-zsh/custom/
 cp .p10k.zsh .zshrc ~/
 
 echo -e "${GREEN}[OK] Configurações copiadas com sucesso.${NC}"
-echo -e "${YELLOW}[INFO] Execute 'source ~/.zshrc' para aplicar as configurações no shell atual.${NC}"
-echo -e "${YELLOW}[INFO] Abra uma sessão tmux, execute 'tmux source ~/.config/tmux/tmux.conf' e pressione 'prefix + I' para instalar os plugins manualmente.${NC}"
+echo -e "${YELLOW}[INFO] Execute 'source ~/.zshrc' em um terminal zsh para aplicar as configurações ou apenas reinicie o sistema.${NC}"
+echo -e "${YELLOW}[INFO] Após iniciar o tmux, execute 'tmux source ~/.config/tmux/tmux.conf' e pressione 'prefix + I' para instalar os plugins.${NC}"
+echo -e "${YELLOW}[INFO] Alacritty é o emulador de terminal recomendado!${NC}"
