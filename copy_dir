@@ -22,10 +22,8 @@ cp -r fonts ~/.fonts
 cp -r oh-my-zsh-custom/* ~/.oh-my-zsh/custom/
 cp .p10k.zsh .zshrc ~/
 
-echo -e "${YELLOW}[INFO] Validando configurações com Lazy sync.${NC}"
-nvim --headless "+Lazy! sync" +qa
-
 echo -e "${GREEN}[OK] Configurações copiadas com sucesso.${NC}"
+echo -e "${YELLOW}[INFO] No Lazyvim execute :Lazy sync para sincronizar os plugins instalados.${NC}"
 echo -e "${YELLOW}[INFO] Execute 'source ~/.zshrc' em um terminal zsh para aplicar as configurações ou apenas reinicie o sistema caso ainda não tenha feito.${NC}"
 echo -e "${YELLOW}[INFO] Após iniciar o tmux, execute 'tmux source ~/.config/tmux/tmux.conf' e pressione 'prefix + I' para instalar os plugins.${NC}"
 echo -e "${YELLOW}[INFO] Alacritty é o emulador de terminal recomendado!${NC}"
