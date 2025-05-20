@@ -4,7 +4,7 @@ set -e
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-PACKAGES=(alacritty neovim tmux zsh bat)
+PACKAGES=(alacritty neovim tmux zsh bat tree-sitter nodejs lua53-luarocks)
 
 echo -e "${YELLOW}[INFO] Instalando pacotes: ${PACKAGES[*]}${NC}"
 sudo zypper --non-interactive install -y "${PACKAGES[@]}"
@@ -60,5 +60,5 @@ if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
 fi
 
 echo -e "${YELLOW}[INFO] Shell padrão alterado para zsh. Para aplicar, reinicie o sistema.${NC}"
-echo -e "${YELLOW}[INFO] LazyVim instalado. Execute 'nvim' e depois ':LazyHealth' para validar. Não execute copy_dir antes disso!${NC}"
+echo -e "${YELLOW}[INFO] LazyVim instalado. Execute 'nvim' e logo apos o prompt execute ':LazyHealth' para checar a instalação. Não execute copy_dir antes disso!${NC}"
 echo -e "${YELLOW}[INFO] Alacritty é o emulador de terminal recomendado!${NC}"
