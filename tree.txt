@@ -1,0 +1,14 @@
+.
+├── config
+│   ├── alacritty
+│   ├── bat
+│   ├── nvim
+│   └── tmux
+├── fonts
+├── oh-my-zsh-custom
+│   ├── plugins
+│   └── themes
+└── share
+    └── nvim
+
+12 directories

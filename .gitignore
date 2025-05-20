@@ -1,0 +1,10 @@
+config/nvim/.git/
+config/tmux/.git/
+
+**/*.swp
+**/*.undo
+**/*.log
+**/__pycache__/
+.cache/
+.state/
+

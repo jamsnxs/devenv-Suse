@@ -1,0 +1,22 @@
+#!/bin/bash
+set -e
+
+echo "[INFO] Copiando arquivos de configuração..."
+
+# Garante que os diretórios de destino existem
+mkdir -p ~/.config
+mkdir -p ~/.local/share
+mkdir -p ~/.fonts
+
+# Copiar configurações
+cp -r config/alacritty ~/.config/
+cp -r config/bat ~/.config/
+cp -r config/nvim ~/.config/
+cp -r config/tmux ~/.config/
+cp -r share/nvim ~/.local/share/
+cp -r fonts ~/.fonts
+cp -r oh-my-zsh-custom/* ~/.oh-my-zsh/custom/
+cp .p10k.zsh .zshrc ~/
+
+echo "[OK] Configurações copiadas com sucesso."
+echo "[INFO] Execute 'source ~/.zshrc' para aplicar as configurações no shell atual."

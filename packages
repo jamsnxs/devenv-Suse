@@ -1,0 +1,71 @@
+#!/bin/bash
+set -e
+
+PACKAGES=(alacritty neovim tmux zsh bat)
+
+echo "[INFO] Instalando pacotes: ${PACKAGES[*]}"
+sudo zypper --non-interactive install -y "${PACKAGES[@]}"
+
+echo "[INFO] Instalando padrão de desenvolvimento C/C++..."
+sudo zypper --non-interactive install -t pattern devel_C_C++
+
+# Inicializar Neovim para criar diretórios necessários
+echo "[INFO] Inicializando Neovim para criação dos diretórios..."
+nvim --headless +qall
+
+# Backup das configs antigas do nvim (se existirem)
+if [ -d "$HOME/.config/nvim" ]; then
+  echo "[INFO] Fazendo backup da configuração atual do Neovim..."
+  mv ~/.config/nvim{,.bak}
+fi
+if [ -d "$HOME/.local/share/nvim" ]; then
+  mv ~/.local/share/nvim{,.bak}
+fi
+if [ -d "$HOME/.local/state/nvim" ]; then
+  mv ~/.local/state/nvim{,.bak}
+fi
+if [ -d "$HOME/.cache/nvim" ]; then
+  mv ~/.cache/nvim{,.bak}
+fi
+
+# Clonar LazyVim Starter
+echo "[INFO] Instalando LazyVim Starter..."
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+
+# Remover .git para evitar conflito no repo
+rm -rf ~/.config/nvim/.git
+
+# Oh My Zsh
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  echo "[INFO] Instalando Oh My Zsh..."
+  RUNZSH=no CHSH=no sh -c \
+    "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
+if [ "$SHELL" != "$(which zsh)" ]; then
+  echo "[INFO] Alterando shell padrão para zsh..."
+  chsh -s "$(which zsh)"
+fi
+
+# zoxide
+if ! command -v zoxide &>/dev/null; then
+  echo "[INFO] Instalando zoxide via script oficial..."
+  curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+fi
+
+# powerlevel10k
+ZSH_CUSTOM=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
+if [ ! -d "$ZSH_CUSTOM/themes/powerlevel10k" ]; then
+  echo "[INFO] Instalando Powerlevel10k..."
+  git clone --depth=2 https://github.com/romkatv/powerlevel10k.git "$ZSH_CUSTOM/themes/powerlevel10k"
+fi
+
+# TPM
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+  echo "[INFO] Instalando TPM (Tmux Plugin Manager)..."
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+
+echo "[INFO] Shell padrão alterado para zsh. Para aplicar, reinicie o sistema."
+echo "[INFO] LazyVim instalado. Execute 'nvim' e depois ':LazyHealth' para validar. Não execute copy_dir antes disso!"
+echo "[INFO] Abra uma sessão tmux e pressione 'prefix + I' para instalar os plugins manualmente."
