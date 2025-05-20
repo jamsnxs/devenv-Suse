@@ -1,4 +1,4 @@
-# devenv-ifsuse
+# devenv-Suse
 ## Recursos de configuração
 - **SO** - [openSUSE Tumbleweed ](https://get.opensuse.org/tumbleweed/#download)
 - **Shell** - Zsh
