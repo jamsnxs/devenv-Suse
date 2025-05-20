@@ -10,6 +10,8 @@
 
 ## Ordem correta:
 
-Executar o script packages — instala pacotes, configura Neovim, Oh My Zsh, TPM, Powerlevel10k e plugins.
+Executar o script packages — instala os pacotes alacritty, neovim, tmux, zsh, bat, tree-sitter, nodejs e lua53-luarocks.
 
-Após o packages terminar, executar o script copy_dir — copia configurações e arquivos pessoais para o diretório home.
+Após o script packages terminar, executar o script copy_dir — copia configurações para o diretório home.
+
+Há instruções extras que são exibidas apos a conclusão de cada script!
