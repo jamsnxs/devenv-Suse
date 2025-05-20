@@ -1,0 +1,36 @@
+#!/bin/bash
+set -e
+
+YELLOW='\033[1;33m'
+GREEN='\033[1;32m'
+NC='\033[0m'
+
+echo -e "${YELLOW}[INFO] Removendo pacotes instalados...${NC}"
+sudo zypper --non-interactive rm -y alacritty neovim tmux zsh bat tree-sitter nodejs lua53-luarocks
+
+echo -e "${YELLOW}[INFO] Removendo configurações do Neovim...${NC}"
+rm -rf ~/.config/nvim ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
+
+echo -e "${YELLOW}[INFO] Restaurando backups do Neovim, se existirem...${NC}"
+[ -d ~/.config/nvim.bak ] && mv ~/.config/nvim{.bak,}
+[ -d ~/.local/share/nvim.bak ] && mv ~/.local/share/nvim{.bak,}
+[ -d ~/.local/state/nvim.bak ] && mv ~/.local/state/nvim{.bak,}
+[ -d ~/.cache/nvim.bak ] && mv ~/.cache/nvim{.bak,}
+
+echo -e "${YELLOW}[INFO] Removendo configurações do Oh My Zsh...${NC}"
+rm -rf ~/.oh-my-zsh ~/.zshrc ~/.p10k.zsh
+
+echo -e "${YELLOW}[INFO] Restaurando shell padrão para bash...${NC}"
+chsh -s /bin/bash
+
+echo -e "${YELLOW}[INFO] Removendo configurações do Alacritty, bat e tmux...${NC}"
+rm -rf ~/.config/alacritty ~/.config/bat ~/.config/tmux
+
+echo -e "${YELLOW}[INFO] Removendo fontes customizadas...${NC}"
+rm -rf ~/.fonts
+
+echo -e "${YELLOW}[INFO] Removendo TPM (Tmux Plugin Manager)...${NC}"
+rm -rf ~/.tmux/plugins/tpm
+
+echo -e "${GREEN}[OK] Ambiente revertido com sucesso (zoxide mantido).${NC}"
+
