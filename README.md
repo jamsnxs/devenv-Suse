@@ -2,10 +2,11 @@
 ## Recursos de configuração
 - **SO** - [openSUSE Tumbleweed ](https://get.opensuse.org/tumbleweed/#download)
 - **Shell** - Zsh
-- **Zsh Framework** - [Oh My Zsh](https://ohmyz.sh/)
 - **Prompt** - [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
 - **Terminal** - [Alacritty](https://github.com/alacritty/alacritty)
+- **Zsh Framework** - [Oh My Zsh](https://ohmyz.sh/)
 - **Editor de Texto** - [Lazyvim](https://www.lazyvim.org/)
+- **Multiplexador de Terminal** - [Tmux](https://github.com/tmux)
 
 ## Ordem correta:
 
